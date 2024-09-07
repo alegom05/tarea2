@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.example.holamundo.entity.Employee;
 
 @Controller
 @RequestMapping("/employee")
@@ -26,6 +27,20 @@ public class EmpleadoController {
         return "empleado/lista";
     }
 
+    @GetMapping("/info/{id}")
+    public String editarEmpleados(@PathVariable("id") Integer id, Model model){
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("Busqueda invalida"));
+        model.addAttribute("employee",employee);
+        return "empleado/formulario";
+    }
+
+    /*@PostMapping("/update")
+    public String actualizacionEmpleado(@ModelAttribute Employee employee,Model model){
+        employeeRepository.save(employee);
+        return "redirect:/employee/";
+    }*/
+
     @ResponseBody
     @RequestMapping(value = {"/listar2"})
     public String listar() {
@@ -43,11 +58,6 @@ public class EmpleadoController {
     public String editar() {
         return "editar employee hr";
     }
-
-
-
-
-
 
 
 

@@ -16,6 +16,5 @@ public interface employeeRepository extends JpaRepository<Employee, Integer> {
     @Query(nativeQuery = true, value = "select * from shippers where CompanyName like %?1%")
     List<Shipper> buscarPorNombreParcial(String companyName);
 
-
 }
 

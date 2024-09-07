@@ -25,6 +25,10 @@
                 <td th:text="${employee.firstname}"></td>
                 <td th:text="${employee.email}"></td>
                 <td th:text="${employee.department.department}"></td>
+                <td th:text="${employee.department.location.city} "></td>
+                <td><a class="btn btn-primary"
+                       th:href="@{'/employee/info/{id}'(id=${employee.id})}">ver</a>
+                </td>
 
                 <!--
                                 <td><a class="btn btn-primary"

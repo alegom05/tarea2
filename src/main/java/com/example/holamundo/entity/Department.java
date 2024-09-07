@@ -17,4 +17,8 @@ public class Department {
     @Column(name = "department_name", nullable = false)
     private String department;
 
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
+
 }
