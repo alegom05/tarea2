@@ -1,8 +1,6 @@
 package com.example.holamundo.controllers;
 
-import com.example.holamundo.entity.Product;
 import com.example.holamundo.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +15,18 @@ public class EmpleadoController {
 
 
     final employeeRepository employeeRepository;
+    final JobRepository jobRepository;
 
 
-    public EmpleadoController(employeeRepository employeeRepository) {
+
+    public EmpleadoController(employeeRepository employeeRepository,
+                              JobRepository jobRepository) {
+
         this.employeeRepository = employeeRepository;
+        this.jobRepository = jobRepository;
     }
 
-
+    //Vista principal: /employee
     @GetMapping({"/",""})
     public String listaEmpleados(Model model, @RequestParam(required = false) String zona) {
         model.addAttribute("listaEmpleados", employeeRepository.findAll());
@@ -35,6 +38,8 @@ public class EmpleadoController {
     public String editarEmpleados(@PathVariable("id") Integer id, Model model){
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("Busqueda invalida"));
+        model.addAttribute("listaTrabajadores", jobRepository.findAll());
+
         model.addAttribute("employee",employee);
         return "empleado/formulario";
     }

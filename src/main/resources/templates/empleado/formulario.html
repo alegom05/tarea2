@@ -27,7 +27,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+          crossorigin="anonymous">
     <title>Employee Information</title>
     <style>
         body {
@@ -98,22 +101,25 @@
             <label for="city">Ciudad:</label>
             <input type="text" id="city" th:value="${employee.department.location.city}" disabled />
         </div>
+
         <div class="form-group">
-            <label for="city">Ciudad:</label>
-            <input type="text" id="job" th:value="${employee.job.job}" disabled />
-        </div>
-        <div class="mb-3">
             <label class="form-label">Trabajo</label>
             <select name="employee" id="employee" class="form-select">
-                <option th:each="employee : ${listaEmpleados}"
-                        th:value="${employee.id}"
-                        th:text="${employee.name}"
-                        th:selected="${employee.id == employee.job.id}"></option>
+                <option th:each="job : ${listaTrabajadores}"
+                        th:value="${job.id}"
+                        th:text="${job.job}"
+                        th:selected="${job.id == employee.job.id}"></option>
             </select>
         </div>
+
         <div class="form-group btn-primary">
             <a href="#" th:href="@{/employee/}" class="btn">Regresar</a>
         </div>
+
+        <!--//Botón registrar-cancelar
+        <a th:href="@{/product}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+        -->
     </form>
 </div>
 </body>

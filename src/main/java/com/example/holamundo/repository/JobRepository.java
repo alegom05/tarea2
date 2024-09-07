@@ -1,11 +1,9 @@
 package com.example.holamundo.repository;
 
-
-import com.example.holamundo.entity.Category;
+import com.example.holamundo.entity.Job;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Integer> {
-
+public interface JobRepository extends JpaRepository<Job, String> {
 }
