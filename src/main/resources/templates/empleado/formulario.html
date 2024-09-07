@@ -34,7 +34,7 @@
     <title>Employee Information</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family:Georgia;
             margin: 20px;
             padding: 0;
             background-color: #f4f4f4;
@@ -67,13 +67,20 @@
         .form-group input[disabled] {
             background-color: #f9f9f9;
         }
-        .form-group a {
+
+        .btn-custom {
+            border: 2px solid #007bff; /* Borde azul */
+            background-color: transparent; /* Fondo transparente */
+            color: #007bff; /* Texto azul */
+            padding: 8px 16px;
+            border-radius: 4px;
             text-decoration: none;
-            color: #007bff;
             font-weight: bold;
+            display: inline-block;
         }
-        .form-group a:hover {
-            text-decoration: underline;
+        .btn-custom:hover {
+            background-color: #007bff; /* Fondo azul al pasar el mouse */
+            color: white; /* Texto blanco */
         }
     </style>
 </head>
@@ -113,11 +120,11 @@
         </div>
 
         <div class="form-group btn-primary">
-            <a href="#" th:href="@{/employee/}" class="btn">Regresar</a>
+            <a href="#" th:href="@{/employee/}" class=" btn-custom">Regresar</a>
         </div>
 
         <!--//Botón registrar-cancelar
-        <a th:href="@{/product}" class="btn btn-danger">Cancelar</a>
+        <a th:href="@{/employee}" class="btn btn-danger">Cancelar</a>
         <button type="submit" class="btn btn-primary">Registrar</button>
         -->
     </form>
