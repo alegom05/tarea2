@@ -7,6 +7,8 @@
         <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Product')}"></nav>
         <h1 class="pb-2 border-bottom">Lista Empleados</h1>
         <a class="btn btn-primary mt-4 mb-4" th:href="@{'/product/new'}">Nuevo Producto</a>
+        <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
         <table class="table">
             <thead>
             <tr>
@@ -26,8 +28,12 @@
                 <td th:text="${employee.email}"></td>
                 <td th:text="${employee.department.department}"></td>
                 <td th:text="${employee.department.location.city} "></td>
+
                 <td><a class="btn btn-primary"
                        th:href="@{'/employee/info/{id}'(id=${employee.id})}">ver</a>
+                </td>
+                <td><a class="btn btn-danger"
+                       th:href="@{'/employee/delete' + '?id=' + ${employee.id}}">Borrar</a>
                 </td>
 
                 <!--

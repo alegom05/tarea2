@@ -1,11 +1,15 @@
 package com.example.holamundo.controllers;
 
+import com.example.holamundo.entity.Product;
 import com.example.holamundo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.holamundo.entity.Employee;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/employee")
@@ -41,22 +45,26 @@ public class EmpleadoController {
         return "redirect:/employee/";
     }*/
 
-    @ResponseBody
-    @RequestMapping(value = {"/listar2"})
-    public String listar() {
-        return "listar employee hr";
+    @GetMapping("/delete")
+    public String borrarEmpleado(Model model,
+                                      @RequestParam("id") int id,
+                                      RedirectAttributes attr) {
+
+        Optional<Employee> optEmployee = employeeRepository.findById(id);
+
+    if (optEmployee.isPresent()) {
+        try {
+            employeeRepository.deleteById(id);
+            attr.addFlashAttribute("msg", "Se borró el empleado."); // Successful deletion
+        } catch (Exception e) {
+            attr.addFlashAttribute("msg", "No se pudo borrar al empleado."); // Deletion failed due to a constraint
+        }
+    } else {
+        attr.addFlashAttribute("msg", "No se encontró al empleado para borrar."); // Employee not found
     }
 
-    @ResponseBody
-    @RequestMapping("/crear")
-    public String crear() {
-        return "crear employee hr";
-    }
+        return "redirect:/employee";
 
-    @ResponseBody
-    @RequestMapping("/editar")
-    public String editar() {
-        return "editar employee hr";
     }
 
 
