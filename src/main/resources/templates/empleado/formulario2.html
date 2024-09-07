@@ -78,8 +78,8 @@
 <h1>Informacion</h1>
 <div class="form-container">
     <form>
-        <div class="form-group">
-            <label for="firstname">Nombre:</label>
+        <div class="mb-3">
+            <label class="form-label">Nombre:</label>
             <input type="text" id="firstname" th:value="${employee.firstname}" disabled />
         </div>
         <div class="form-group">
@@ -99,20 +99,21 @@
             <input type="text" id="city" th:value="${employee.department.location.city}" disabled />
         </div>
         <div class="form-group">
-            <label for="city">Ciudad:</label>
+            <label for="city">Trabajo:</label>
             <input type="text" id="job" th:value="${employee.job.job}" disabled />
         </div>
         <div class="mb-3">
             <label class="form-label">Trabajo</label>
             <select name="employee" id="employee" class="form-select">
-                <option th:each="employee : ${listaEmpleados}"
-                        th:value="${employee.id}"
-                        th:text="${employee.name}"
-                        th:selected="${employee.id == employee.job.id}"></option>
+                <option th:each="employeee : ${listaEmpleados}"
+                        th:value="${employeee.id}"
+                        th:text="${employeee.companyname}"
+                        th:selected="${employeee.id == employeee.job.id}"></option>
             </select>
         </div>
         <div class="form-group btn-primary">
             <a href="#" th:href="@{/employee/}" class="btn">Regresar</a>
+
         </div>
     </form>
 </div>

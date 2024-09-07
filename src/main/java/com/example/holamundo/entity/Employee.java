@@ -4,6 +4,7 @@ package com.example.holamundo.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.batch.BatchProperties;
 
 import java.sql.Blob;
 import java.sql.Date;
@@ -26,6 +27,10 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Job job;
     /*@ManyToOne
     @JoinColumn(name="department_id")
     private Department department;*/
