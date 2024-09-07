@@ -11,11 +11,10 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "department_id", nullable = false)
     private int id;
 
-    /*
-    @ManyToOne
     @Column(name = "department_name", nullable = false)
-    private String department;*/
+    private String department;
 
 }

@@ -21,7 +21,11 @@ public class Employee {
     private String lastname;
     @Column(name = "first_name", nullable = false)
     private String firstname;
+    private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
     /*@ManyToOne
     @JoinColumn(name="department_id")
     private Department department;*/

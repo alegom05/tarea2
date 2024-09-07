@@ -23,8 +23,8 @@
             <tr th:each="employee, info : ${listaEmpleados}">
                 <td th:text="${info.index + 1}"></td>
                 <td th:text="${employee.firstname}"></td>
-                <td th:text="${employee.firstname}"></td>
-                <td th:text="${employee.firstname}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.department.department}"></td>
 
                 <!--
                                 <td><a class="btn btn-primary"
